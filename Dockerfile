@@ -7,9 +7,9 @@ LABEL company="KMSF"
 LABEL website="www.munschflorentin.fr"
 LABEL version="1.0"
 
-ENV UID=33 \
-    GID=33 \
-    PORT=80
+ARG UID=33 \
+    GID=33
+ENV PORT=80
 
 # Apache modules
 RUN apk update && apk add apache-mod-fcgid
