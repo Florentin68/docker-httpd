@@ -13,8 +13,8 @@ ENV UID=33 \
     PORT=80
 
 # Apache modules
-RUN apt-get update -q -y \
- && apt-get install -q -y --allow-unauthenticated --allow-downgrades --allow-remove-essential --allow-change-held-packages --no-install-recommends \
+RUN apk update -q -y \
+ && apk add -q -y --allow-unauthenticated --allow-downgrades --allow-remove-essential --allow-change-held-packages --no-install-recommends \
         libapache2-mod-fcgid \
         && rm -rf /var/lib/apt/lists/*
 
