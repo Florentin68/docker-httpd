@@ -12,18 +12,14 @@ ENV PORT=80
 # Apache modules
 RUN apk update && apk add apache-mod-fcgid
 
-# Enable proxy and fcgi modules
-RUN sed -i \
-    -e 's/^#\(LoadModule proxy_module modules\/mod_proxy.so\)/\1/' \
-    -e 's/^#\(LoadModule proxy_fcgi_module modules\/mod_proxy_fcgi.so\)/\1/' \
-    /usr/local/apache2/conf/httpd.conf
-
-# Create user, directories and update permissions
-RUN mkdir -p /var/www /usr/local/apache2/logs \
-    && chown -R www-data:www-data /var/www /usr/local/apache2/logs
+# Create directories and update permissions
+RUN mkdir -p /var/www \
+    && chown -R www-data:www-data /var/www
 
 VOLUME /usr/local/apache2/conf/httpd.conf
+VOLUME /usr/local/apache2/conf/extra/httpd-vhosts.conf
 VOLUME /var/www
+VOLUME /var/log/apache2
 
 WORKDIR /var/www
 
