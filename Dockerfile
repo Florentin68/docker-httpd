@@ -13,10 +13,7 @@ ENV UID=33 \
     PORT=80
 
 # Apache modules
-RUN apk update -q -y \
- && apk add -q -y --allow-unauthenticated --allow-downgrades --allow-remove-essential --allow-change-held-packages --no-install-recommends \
-        libapache2-mod-fcgid \
-        && rm -rf /var/lib/apt/lists/*
+RUN apk update && apk add apache-mod-fcgid
 
 # Set timezone
 RUN echo $TZ > /etc/timezone && dpkg-reconfigure --frontend $DEBIAN_FRONTEND tzdata
