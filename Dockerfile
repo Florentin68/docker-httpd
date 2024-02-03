@@ -21,7 +21,7 @@ RUN sed -i \
     /usr/local/apache2/conf/httpd.conf
 
 # Create user, directories and update permissions
-RUN addgroup -g 33 www-data \
+RUN addgroup -g 33 www-data  \
     && adduser -D -H -h /var/www -s /sbin/nologin -G www-data -u 33 www-data \
     && mkdir -p /var/www /usr/local/apache2/logs \
     && chown -R www-data:www-data /var/www /usr/local/apache2/logs
