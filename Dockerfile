@@ -24,7 +24,7 @@ RUN sed -i \
 RUN addgroup -g $GID www-data \
     && adduser -D -H -h /var/www -s /sbin/nologin -G www-data -u $UID www-data \
     && mkdir -p /var/www /usr/local/apache2/logs \
-    && chown -R app:app /var/www /usr/local/apache2/logs
+    && chown -R www-data:www-data /var/www /usr/local/apache2/logs
 
 VOLUME /usr/local/apache2/conf/httpd.conf
 VOLUME /var/www
