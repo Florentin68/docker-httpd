@@ -13,8 +13,8 @@ ENV PORT=80
 RUN apk update && apk add apache-mod-fcgid
 
 # Create directories and update permissions
-RUN mkdir -p /var/www \
-    && chown -R www-data:www-data /var/www
+RUN mkdir -p /var/www /var/log/apache2 \
+    && chown -R www-data:www-data /var/www /var/log/apache2 /usr/local/apache2/logs
 
 VOLUME /usr/local/apache2/conf/httpd.conf
 VOLUME /usr/local/apache2/conf/extra/httpd-vhosts.conf
